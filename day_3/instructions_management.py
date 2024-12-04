@@ -61,7 +61,9 @@ def create_only_do_python_tuples_from_input():
                 elif match == "don't()":
                     do_on = False
                 elif do_on:
-                    muls.append((int(match[4:match.index(',')]), int(match[match.index(',') + 1:match.index(')')])))
+                    #muls.append((int(match[4:match.index(',')]), int(match[match.index(',') + 1:match.index(')')])))
+                    nums = re.findall(r"[0-9]+", match)
+                    muls.append((int(nums[0]), int(nums[1])))
     
     return muls
 
