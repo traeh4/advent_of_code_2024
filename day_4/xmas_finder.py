@@ -6,9 +6,7 @@ if __name__ == '__main__':
     total_lines = 140
 
     with open('day_4/word_search.txt', 'r') as f:
-
         lines = f.readlines()
-
         for i in range(len(lines)):
             line = lines[i].rstrip()
             for j in range(len(line) - 3):
@@ -19,18 +17,18 @@ if __name__ == '__main__':
                 
                 # Find all down-and-forward-diagonal XMASes
                 if i <= total_lines - 4:
-                    line_2 = lines[i + 1].rstrip()
-                    line_3 = lines[i + 2].rstrip()
-                    line_4 = lines[i + 3].rstrip()
+                    line_2 = lines[i + 1]
+                    line_3 = lines[i + 2]
+                    line_4 = lines[i + 3]
                     down_and_forward_diagonal = line[j] + line_2[j + 1] + line_3[j + 2] + line_4[j + 3]
                     if down_and_forward_diagonal == xmas or down_and_forward_diagonal == samx:
                         count += 1
                 
                 # Find all up-and-forward-diagonal XMASes
                 if i >= 3:
-                    line_2 = lines[i - 1].rstrip()
-                    line_3 = lines[i - 2].rstrip()
-                    line_4 = lines[i - 3].rstrip()
+                    line_2 = lines[i - 1]
+                    line_3 = lines[i - 2]
+                    line_4 = lines[i - 3]
                     up_and_forward_diagonal = line[j] + line_2[j + 1] + line_3[j + 2] + line_4[j + 3]
                     if up_and_forward_diagonal == xmas or up_and_forward_diagonal == samx:
                         count += 1
@@ -39,9 +37,9 @@ if __name__ == '__main__':
                 
                 # Find all straight-up-and-down XMASes
                 if i <= total_lines - 4:
-                    line_2 = lines[i + 1].rstrip()
-                    line_3 = lines[i + 2].rstrip()
-                    line_4 = lines[i + 3].rstrip()
+                    line_2 = lines[i + 1]
+                    line_3 = lines[i + 2]
+                    line_4 = lines[i + 3]
                     straight_down = line[j] + line_2[j] + line_3[j] + line_4[j]
                     if straight_down == xmas or straight_down == samx:
                             count += 1
