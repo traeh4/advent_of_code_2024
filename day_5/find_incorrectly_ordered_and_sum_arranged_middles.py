@@ -22,17 +22,10 @@ if __name__ == '__main__':
     total = 0
     
     for page in pages:
-        satisfies = True
-        for rule in rules:
-            if not satisfies_rules.satisfies(rule, page):
-                satisfies = False
-        if not satisfies:
-            incorrectly_ordered.append(page)
-
-    for page in incorrectly_ordered:
-        rearranged_page = page.copy()
-        while not page_satisfies(rules, rearranged_page):
-            rearranged_page = rearrange(rules, rearranged_page)
-        total += rearranged_page[len(rearranged_page) // 2]
+        if not page_satisfies(rules, page):
+            rearranged_page = page.copy()
+            while not page_satisfies(rules, rearranged_page):
+                rearranged_page = rearrange(rules, rearranged_page)
+            total += rearranged_page[len(rearranged_page) // 2]
     
     print(total)
