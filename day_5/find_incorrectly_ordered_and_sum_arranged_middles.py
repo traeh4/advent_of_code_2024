@@ -7,13 +7,6 @@ def rearrange(rules, page):
             page.insert(page.index(rule[1]), distal)
     return page
 
-def page_satisfies(rules, page):
-    satisfies = True
-    for rule in rules:
-        if not satisfies_rules.satisfies(rule, page):
-            satisfies = False
-    return satisfies
-
 if __name__ == '__main__':
     
     pages = satisfies_rules.format_pages_from_input()
@@ -22,9 +15,9 @@ if __name__ == '__main__':
     total = 0
     
     for page in pages:
-        if not page_satisfies(rules, page):
+        if not satisfies_rules.page_satisfies(rules, page):
             rearranged_page = page.copy()
-            while not page_satisfies(rules, rearranged_page):
+            while not satisfies_rules.page_satisfies(rules, rearranged_page):
                 rearranged_page = rearrange(rules, rearranged_page)
             total += rearranged_page[len(rearranged_page) // 2]
     

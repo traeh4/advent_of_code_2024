@@ -23,9 +23,15 @@ def satisfies(rule, order):
         return True
     return False
 
+def page_satisfies(rules, page):
+    satisfy = True
+    for rule in rules:
+        if not satisfies(rule, page):
+            satisfy = False
+    return satisfy
+
 if __name__ == '__main__':
     pages = format_pages_from_input()
-    print(pages)
-    #rules = format_rules_from_input()
-    #print(rules)
+    rules = format_rules_from_input()
     print(satisfies([93, 95], pages[-1]))
+    print(page_satisfies(rules, pages[1]))
