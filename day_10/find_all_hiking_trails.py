@@ -10,7 +10,7 @@ if __name__ == '__main__':
                 trailheads.append([north_south_loc, east_west_loc]) 
     for trailhead in trailheads:
         trailhead_obj = map_management.trail_finder(trailhead)
-        trailhead_obj.find_hiking_trails()
+        trailhead_obj.find_hiking_trail([trailhead])
         successful_trails = trailhead_obj.get_hiking_trails()
         hiking_trails += successful_trails
     print(len(hiking_trails))

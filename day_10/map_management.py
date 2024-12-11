@@ -36,13 +36,20 @@ class trail_finder:
     def find_hiking_trails(self):
         if self.get_elevation(self.loc) == '9':
             if self.loc not in self.hiking_trails:
-                self.hiking_trails.append(self.loc)
+                self.hiking_trails.append(self.loc)       
         if self.get_hiking_appropriate_adjacent_locs() == []:
             return None
         for query_loc in self.get_hiking_appropriate_adjacent_locs():
             self.move_to_next_loc(query_loc)
             self.find_hiking_trails()
-            
+    def find_hiking_trail(self, hiking_trail):
+        if self.get_elevation(self.loc) == '9':
+            self.hiking_trails.append(hiking_trail)
+        if self.get_hiking_appropriate_adjacent_locs() == []:
+            return None
+        for query_loc in self.get_hiking_appropriate_adjacent_locs():
+            self.move_to_next_loc(query_loc)
+            self.find_hiking_trail(hiking_trail)
 
 if __name__ == '__main__':
     map = get_python_list_from_input()
